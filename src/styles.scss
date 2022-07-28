@@ -1,1 +1,61 @@
 /* You can add global styles to this file, and also import other style files */
+
+//boostrap CSS
+
+
+//boostrap icons
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+html, body {
+  height: 100%;
+  margin: 0;
+  
+}
+
+* {
+  margin : 0;
+  padding: 0;
+  }
+
+
+  :root {
+    --hoverColor: white;
+    --black: #063A4F;
+    --green: #01AE13;
+    --paragraph: #707986;
+}
+
+h1,h2,h3,h4,h5{
+  font-family: 'Orelega One', cursive;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+p,li,a{
+  font-family: "Karla", sans-serif;
+}
+
+button:hover{
+  border: none !important;
+
+}
+
+button:focus {
+  box-shadow: none;
+  border: none;
+  border-color: none;
+}
+.green-txt{
+  color: var(--green) !important;
+
+}
+
+.green-btn{
+  background-color: var(--green) !important;
+    color: white;
+}
+
+.parg {
+  font-size: 20px;
+  color: var(--paragraph);
+}

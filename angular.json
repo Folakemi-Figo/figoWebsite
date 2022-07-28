@@ -19,7 +19,11 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
+          
           "options": {
+            "allowedCommonJsDependencies": [
+              "lodash"
+           ],
             "outputPath": "dist/figo-website",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -31,9 +35,20 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/aos/dist/aos.css",
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/aos/dist/aos.js"
+
+
+            ]
           },
           "configurations": {
             "production": {
@@ -107,5 +122,7 @@
       }
     }
   },
-  "defaultProject": "figo-website"
+  "cli": {
+    "analytics": false
+  }
 }

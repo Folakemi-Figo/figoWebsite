@@ -1,0 +1,293 @@
+<div class="main">
+    <div class="top-main">
+        <nav class="navbar fixed-top">
+          
+            <div class="container">
+                <div class="links">
+                    <button class="btn btn-outline-success login-btn" (click)="openAgentWebApp()">Login</button>
+                
+                    <a class="nav-itema active" href="#">Figo Agent</a>
+                    <a class="nav-item">Figo Lending </a>
+                    <a class="nav-item">Figo Insure  </a>
+            
+                  </div>
+          
+                 
+                  <div class="logo">
+                    <a class="navbar-brand" href="#">
+                      <img src="../../assets/images/logo.png" alt="" width="100px" />
+                    </a>
+                </div>
+            </div>
+
+      
+        </nav>
+  
+  
+
+
+      </div>
+    
+      <div data-aos="fade-zoom-in"
+      data-aos-easing="ease-in-back"
+      data-aos-delay="100"
+      data-aos-offset="0"
+        class="main-content"
+      >
+        <div class="carousel-div" >
+          <div class="carousel-overlay">
+          </div>
+          <div class="carousel-caption " *ngIf="images">
+            <h1 class="mb-2 heading">
+              Providing accessible
+              <span class="txt-green">financial services</span> to the informal
+              sectors and communities in <span class="green-txt"> Africa</span>
+            </h1>
+            <p>  More convenient and secure financial services through our agent networks.
+            </p>
+              <button type="button" class="btn btn-started mr-3 green-btn">
+                Contact Team
+              </button>
+          </div>
+          <ngb-carousel [class.visible]="images"  [interval]="4000" [showNavigationArrows]="false" [showNavigationIndicators]="false">
+            <ng-template ngbSlide *ngFor="let image of images">
+              <div class="picsum-img-wrapper">
+                <img [src]="image" alt="Random slide">
+              </div>
+     
+            </ng-template>
+          </ngb-carousel>
+          
+          
+        </div>
+    
+      
+    
+    
+      <div class="grow-main">
+        <div class="container">
+        <h1 class="mb-5 heading">
+          Why you should grow your business with <span class="green-txt">Figo</span>
+        </h1>
+        <div class="row">
+          <div class="col-sm-6 col-md-6 col-lg-4 py-2 mb-5 " data-aos="fade-right">
+            <div class="card h-100">
+              <img
+                class="card-img-top"
+                src="../../assets/images/money (2) 1.png"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title ">Unlimited Income</h5>
+                <p class="card-text parg">
+                  Receive commission for every transaction. The more customers you
+                  have, the more you earn.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4 py-2 mb-5 " data-aos="fade-up">
+            <div class="card h-100">
+              <img
+                class="card-img-top"
+                src="../../assets/images/wallet (1) 1.png"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title ">Daily payouts</h5>
+                <p class="card-text parg">
+                  Commissions are paid daily. You can withdraw your funds whenever
+                  you want.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4 py-2 mb-5 " data-aos="fade-left">
+            <div class="card h-100">
+              <img
+                class="card-img-top"
+                src="../../assets/images/Rocket.png"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title ">Easy to start</h5>
+                <p class="card-text parg">
+                  Promoting Diversity in the work place and community
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4 py-2 mb-5" data-aos="fade-right">
+            <div class="card h-100">
+              <img
+                class="card-img-top"
+                src="../../assets/images/open-box 1.png"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title ">Rewards & Discounts</h5>
+                <p class="card-text parg">
+                  Being our Agent has its privileges. Participate and earn more.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4 py-2 mb-5" data-aos="fade-up">
+            <div class="card h-100">
+              <img
+                class="card-img-top"
+                src="../../assets/images/discount-label 1.png"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title ">Free promo materials</h5>
+                <p class="card-text parg">
+                  We will provide you with complimentary promotional tools to
+                  attract more customers.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-4 py-2 mb-5" data-aos="fade-left">
+            <div class="card h-100">
+              <img
+                class="card-img-top"
+                src="../../assets/images/all-inclusive 1.png"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title ">Inclusiveness</h5>
+                <p class="card-text parg">
+                  Get individual support in your native language. We will help you
+                  with every step.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="service-main">
+        <div class="container">
+          <div class="top-text mb-5">
+            <h1 class="heading">
+              Services we can offer you with <span class="green-txt">Figo</span>
+            </h1>
+            <p class="parg">
+              With the figo solution, you can perform the following transactions
+            </p>
+          </div>
+    
+          <div class="services">
+            <div class="row">
+              <div class="col-md-6 col-sm-12 service-list">
+                  <ul >
+                    <li *ngFor="let item of items" data-aos="fade-down" >{{item.name}}</li>
+                  </ul>
+              </div>
+              <div class="col-md-6 parent-imgs">
+                <img
+                  src="../../assets/images/pos.png"
+                  class="img-responsive bottom-img"
+                  width="100%"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+    
+    
+        <div class="agent">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 agent-img">
+                <img src="../../assets/images/start.png" class="img-responsive " width="100%" />
+              </div>
+              <div class="col-md-6 agent-text">
+                <div class="top-text">
+                  <h1 class="heading">How to be an <span class="green-txt">Agent</span> </h1>
+                  <p class="parg mt-3 mb-5">
+                    Simply sign-up as an Agent and fund your wallet to start
+                    transacting
+                  </p>
+                  <ul class="agent-steps">
+                      <li data-aos="fade-left"> <img src="../../assets/images/sign.png" class="img-responsive" width="100%" alt=""> Sign up</li>
+                      <li class="bar"> </li>
+                      <li data-aos="fade-left"> <img src="../../assets/images/lock.png" alt=""> Fund your Wallet</li>
+                      <li class="bar"> </li>
+                      <li data-aos="fade-left">  <img src="../../assets/images//starttransacting.png" alt=""> Start transacting </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="waitlist">
+            <div class="container">
+                <div class="waitlist-container">
+                    <div class="top-text mb-5">
+                        <h1 class="heading">Join the <span class="green-txt">Waitlist</span></h1>
+                        <p class=" mt-2 parg">
+                            Enter your email to join our mailing list and get timely updates on Figo.
+                        </p>
+                        <div class="input-group ">
+                        <input type="text" class="form-control" placeholder="Enter your email">
+                            <div class="input-group-append">
+                              <button class="btn" type="button">Get Started</button>
+                            </div>
+                          </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+  
+      <div class="footer">
+          <div class="container">
+              <div class="footer-top row">
+                      <div class="col-md-3">
+                          <p>CONTACT US</p>
+                          <ul>
+                              <li class="row"><i class="bi bi-envelope-fill col-1"></i> care@figo.africa</li>
+                              <li class="row"><i class="bi bi-telephone-fill col-1"></i> 234 800 000 0000 </li>
+                              <li class="row"><i class="bi bi-house-fill col-1" ></i> 292 Borno Way Alagomeji,<br /> Lagos state</li>
+                          </ul>
+                      </div>
+                      <div class="col-md-3">
+                          <p>PRODUCTS</p>
+                          <ul>
+                              <li>Figo Agent</li>
+                              <li class="inactive">Figo Lending (Coming soon...)</li>
+                              <li class="inactive">Figo Insure (Coming soon...)</li>
+                          </ul>
+                      </div>
+                      <div class="col-md-3">
+                          <p>TERMS OF SERVICE</p>
+                          <ul>
+                              <li>Terms of Use</li>
+                              <li>Privacy Policy</li>
+                              <li>Cookies Policy</li>
+                          </ul>
+                      </div>
+                      <div class="col-md-3">
+                          <P>FOLOW US</P>
+                          <ul class="follow">
+                              <li><img src="../../assets/images/facebook.png" alt="" srcset=""></li>
+                              <li><img src="../../assets/images/instagram.png" alt="" srcset=""></li>
+                              <li><img src="../../assets/images/linkedin.png" alt=""></li>
+                              <li><img src="../../assets/images/twitter.png" alt=""></li>
+                          </ul>
+                      </div>
+              </div>
+              <div class="footer-bottom">
+                  <p class="">© Figo</p>
+              </div>
+          </div>
+      </div>
+    </div>
+  
