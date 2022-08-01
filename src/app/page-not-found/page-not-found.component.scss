@@ -1,0 +1,18 @@
+
+
+.content-container{
+         text-align: center;
+    h1{
+        font-size: 100px;
+       // color: red;
+    }
+
+    .btn{
+        width: 50%;
+        height: 40px;
+        margin-top: 20px;
+        background-color: var(--green) !important;
+        border: none !important;
+        font-weight: bold;
+    }
+}
