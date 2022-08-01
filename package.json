@@ -20,6 +20,7 @@
     "@angular/router": "^14.1.0",
     "@ng-bootstrap/ng-bootstrap": "^12.1.2",
     "@popperjs/core": "^2.11.5",
+    "angular-code-input": "^1.6.0",
     "aos": "^2.3.4",
     "bootstrap": "^5.2.0",
     "bootstrap-icons": "^1.9.1",

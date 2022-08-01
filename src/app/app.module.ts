@@ -6,12 +6,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FigoAgentComponent } from './figo-agent/figo-agent.component';
+import { WebsiteComponent } from './website/website.component';
+import { LoginComponent } from './login/login.component';
+import { AgentLoginComponent } from './login/agent-login/agent-login.component';
+import { MerchantLoginComponent } from './login/merchant-login/merchant-login.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FigoAgentComponent
+    WebsiteComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -19,6 +25,7 @@ import { FigoAgentComponent } from './figo-agent/figo-agent.component';
     HttpClientModule,
     RouterModule,
     NgbModule,
+    LoginModule,
     AppRoutingModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
