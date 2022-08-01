@@ -1,0 +1,35 @@
+<div class="login-component">
+  <div class="container-fluid">
+    <nav class="navbar">
+      <div class="container justify-content-end">
+        <div class="logo">
+          <a class="navbar-brand" href="#">
+            <img src="../../assets/images/logo.png" alt="" width="100px" />
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="login-main">
+      <div class="login-tabs">
+        <ul class="tab-headers">
+          <li [ngClass]=" activeAgentTab? 'active' : 'inactive'" (click)="selectAgentTab()">
+                Figo Agent
+            </li>
+          <li  [ngClass]="activeMerchantTab? 'active' : 'inactive' " (click)="selectMerchantTab()">
+                Figo Merchant
+              </li>
+        </ul>
+
+        <div class="login-content">
+          <div class="agent-login"  *ngIf="activeAgentTab">
+            <app-agent-login></app-agent-login>
+          </div>
+          <div class="merchant-login" *ngIf="activeMerchantTab">
+            <app-merchant-login></app-merchant-login>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
