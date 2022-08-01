@@ -1,0 +1,38 @@
+
+      <form>
+        <div class="mb-3">
+          <input
+            type="text"
+            placeholder="Phone Number"
+            class="form-control"
+            id="phoneNumber"
+            name="phoneNumber"
+            [(ngModel)]="phoneNumber"
+            autocomplete="off"
+            required
+            [maxLength]="11"
+          />
+          <!-- <span class="invalid" *ngIf="this.sharedService.noLenght < 11">
+            Please input a Valid phoneNumber.
+          </span> -->
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Agent PIN</label>
+          <code-input
+            [isCodeHidden]="true"
+            [isPrevFocusableAfterClearing]="false"
+            [codeLength]="4"
+          >
+          </code-input>
+        </div>
+        <a class="text-left" routerLink="../forgot-pin">Forgot Pin?</a>
+        <div class="form-bottom">
+          <button
+            class="btn mb-3"
+          >
+            Login
+          </button>
+          <span>Back to <a href="" class="home-btn">Figo</a></span>
+        </div>
+      </form>
+  
