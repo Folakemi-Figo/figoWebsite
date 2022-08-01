@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FigoAgentComponent } from './figo-agent.component';
+import { WebsiteComponent } from './website.component';
 
-describe('FigoAgentComponent', () => {
-  let component: FigoAgentComponent;
-  let fixture: ComponentFixture<FigoAgentComponent>;
+describe('WebsiteComponent', () => {
+  let component: WebsiteComponent;
+  let fixture: ComponentFixture<WebsiteComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FigoAgentComponent ]
+      declarations: [ WebsiteComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FigoAgentComponent);
+    fixture = TestBed.createComponent(WebsiteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

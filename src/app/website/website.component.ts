@@ -1,15 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgbCarousel, NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
 
-
 @Component({
-  selector: 'app-figo-agent',
-  templateUrl: './figo-agent.component.html',
-  styleUrls: ['./figo-agent.component.scss'],
-  providers: [NgbCarouselConfig] 
+  selector: 'app-website',
+  templateUrl: './website.component.html',
+  styleUrls: ['./website.component.scss']
 })
-export class FigoAgentComponent implements OnInit {
+export class WebsiteComponent implements OnInit {
 
   @ViewChild('carousel', { static: true }) carousel!: NgbCarousel ;
 
@@ -50,4 +48,5 @@ export class FigoAgentComponent implements OnInit {
   openAgentWebApp(){
     window.location.href ='https://figo-africa.netlify.app/user/login' ; 
   }
+
 }
