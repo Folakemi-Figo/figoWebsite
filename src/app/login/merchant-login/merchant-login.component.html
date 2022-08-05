@@ -1,1 +1,266 @@
-<p>merchant-login works!</p>
+<div class="merchant-signup-form">
+  <div class="top">
+    <h3>Sign Up</h3>
+    <p class="login-merchant" *ngIf="page1Active">Already a Merchant? <a>Login</a></p>
+
+  </div>
+
+  <div class="merchant-signup-pages">
+
+    <div class="steps-header">
+      <div
+        class="step step1 next"
+        [ngClass]="page1Active ? 'active' : 'inactive'"
+      >
+        1
+      </div>
+      <div
+        class="step step2 next"
+        [ngClass]="page2Active ? 'active' : 'inactive'"
+      >
+        2
+      </div>
+      <div
+        class="step step3 next"
+        [ngClass]="page3Active ? 'active' : 'inactive'"
+      >
+        3
+      </div>
+      <div class="step step3" [ngClass]="page4Active ? 'active' : 'inactive'">
+        4
+      </div>
+    </div>
+    <mat-stepper [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <mat-form-field appearance="fill">
+            <div class="top">
+                <p class="">Verify BVN</p>
+        
+            </div>
+            <div class="mb-4">
+              <div class="inputcontainer">
+                <label for="exampleInputPassword1" class="form-label"
+                  >Enter BVN <i class="bi bi-exclamation-circle"></i></label
+                >
+
+                <input
+                  type="text"
+                  class="form-control"
+                  id="bvn"
+                  name="bvn"
+                  required
+                  [maxLength]="11"
+                  (keyup)="getBvn($event)"
+                  [disabled]="showSpinner === true"
+                />
+                <div class="icon-container" *ngIf="showSpinner">
+                  <i class="loader"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-4" *ngIf="showOtp">
+              <label for="exampleInputPassword1" class="form-label"
+                >Agent PIN</label
+              >
+              <code-input
+                [isCodeHidden]="true"
+                [isPrevFocusableAfterClearing]="false"
+                [codeLength]="4"
+                (codeCompleted)="onCodeCompleted($event)"
+              >
+              </code-input>
+            </div>
+          </mat-form-field>
+          <div>
+            <div class="form-bottom">
+              <button
+                class="btn submit-btn"
+                (click)="verifyInfo()"
+                *ngIf="page1Done === false"
+                [disabled]="page1Btn === false"
+              >
+                Verify
+              </button>
+              <button
+                class="btn submit-btn"
+                (click)="showPage2(stepper)"
+
+                *ngIf="page1Done === true"
+              >
+                Next ->
+              </button>
+            </div>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <mat-form-field appearance="fill">
+            <div class="top">
+                <p class="">Business Information  <i class="bi bi-exclamation-circle"></i></p>
+              </div>
+      
+              <div class="mb-2">
+                <label for="exampleInputPassword1" class="form-label"
+                  >Business Name <i class="bi bi-exclamation-circle"></i></label
+                >
+      
+                <input
+                  type="text"
+                  class="form-control"
+                  id="businessName"
+                  name="businessName"
+                  autocomplete="off"
+                  required
+                />
+              </div>
+              <div class="mb-2">
+                <label for="exampleInputPassword1" class="form-label"
+                  >CAC Reg.Number</label
+                >
+      
+                <input
+                  type="text"
+                  class="form-control"
+                  id="businessName"
+                  name="businessName"
+                  autocomplete="off"
+                  
+                />
+              </div>
+              <div class="mb-2">
+                <label for="exampleInputPassword1" class="form-label"
+                  >Business Address <i class="bi bi-exclamation-circle"></i></label
+                >
+      
+                <input
+                  type="text"
+                  class="form-control"
+                  id="businessName"
+                  name="businessName"
+                  autocomplete="off"
+                  required
+                />
+              </div>
+
+              <div class="row mb-2">
+                  <div class="mb-2 col-6">
+                      <label>Country</label>
+                    <select               class="form-control form-select"
+                    >
+                        <option>Large select</option>
+                      </select>
+                  </div>
+                  <div class="mb-2 col-6">
+                    <label>State <i class="bi bi-exclamation-circle"></i></label>
+                  <select               class="form-control form-select"
+                  >
+                      <option>Large select</option>
+                    </select>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="mb-2 col-6">
+                    <label>City <i class="bi bi-exclamation-circle"></i></label>
+                  <select               class="form-control form-select"
+                  >
+                      <option>Large select</option>
+                    </select>
+                </div>
+                <div class="mb-2 col-6">
+                  <label>Local Government <i class="bi bi-exclamation-circle"></i></label>
+                <select               class="form-control form-select"
+                >
+                    <option>Large select</option>
+                  </select>
+              </div>
+            </div>
+          </mat-form-field>
+          <div class="form-bottom">
+            <button class="btn btn-danger " style="width: 30%;" (click)="goBackPage1(stepper)">Back</button>
+
+            <button                 class="btn submit-btn" style="width: 50%; margin-left: 10px;
+            "
+            matStepperNext (click)="showPage3()">
+              Next
+            </button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="thridFormGroup">
+        <form [formGroup]="thridFormGroup">
+          <mat-form-field appearance="fill">
+            <div class="top">
+                <p class="">Set Password</p>
+              </div>
+      
+              <div class="mb-2">
+                <label for="exampleInputPassword1" class="form-label"
+                  > Email Address <i class="bi bi-exclamation-circle"></i></label
+                >
+      
+                <input
+                  type="text"
+                  class="form-control"
+                  id="businessName"
+                  name="businessName"
+                  autocomplete="off"
+                  required
+                />
+              </div>
+              <div class="mb-2">
+                <label for="exampleInputPassword1" class="form-label"
+                  >Password <i class="bi bi-exclamation-circle"></i></label
+                >
+      
+                <input
+                  type="text"
+                  class="form-control"
+                  id="businessName"
+                  name="businessName"
+                  autocomplete="off"
+                  required
+                />
+              </div>
+              <div class="mb-4">
+                <label for="exampleInputPassword1" class="form-label"
+                  >Verify Password</label
+                >
+      
+                <input
+                  type="text"
+                  class="form-control"
+                  id="businessName"
+                  name="businessName"
+                  autocomplete="off"
+                  required
+                />
+              </div>
+          </mat-form-field>
+          <div class="form-bottom">
+            <button class="btn btn-danger " style="width: 30%;" (click)="goBackPage2(stepper)">Back</button>
+
+            <button                 class="btn submit-btn" style="width: 50%; margin-left: 10px;
+            "
+            (click)="compelete(stepper)" >
+              Done!
+            </button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step>
+          <div class="final-step">
+            <p>You Registration Has been Compeleted. <br /> Click the Link In your Mail to Verify Your Account</p>
+
+          </div>
+
+      </mat-step>
+    </mat-stepper>
+</div>
+  <div class="merchant-login-form"></div>
+</div>

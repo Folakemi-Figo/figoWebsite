@@ -1,0 +1,115 @@
+::ng-deep .mat-horizontal-stepper-header{
+    pointer-events: none !important;
+}
+::ng-deep .mat-horizontal-stepper-header-container  {
+    display: none !important;
+   }
+
+.merchant-signup-form{
+
+    .top{
+        text-align: center;
+
+        p{
+            margin-bottom: 5px;
+            color: var(--gray);
+        }
+        .login-merchant{
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 10px;
+    
+            a{
+                color: var(--blue);
+                font-weight: bold;
+                font-size: 18px;
+            }
+    
+            a:hover{
+                text-decoration: underline !important;
+            }
+        }
+
+
+    }
+
+    .steps-header{
+        display: flex;
+        justify-content: space-evenly;
+        list-style: none;
+        padding-bottom: 5%;
+        .step{
+            display: block;
+
+            background-color: rgba(197, 197, 197, 0.168627451);
+                        padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+       .next:after{
+        position: absolute;
+        content: "";
+        height: 1px;
+        background-color: gray;        width: 40px;
+        margin-left: 16px;
+        margin-top: 10px;
+       }
+
+       .active{
+           background-color: var(--active);
+           color: white;
+       }
+    }
+
+
+
+    label{
+        color: var(--gray);
+        font-size: 14px;
+
+
+        i{
+            color: var(--red);
+            font-size: 12px;
+
+    margin-left: 2px;
+
+        }
+    
+      }
+
+
+      input{
+        font-size: 13px !important;
+        line-height: 30px !important;
+      }
+    
+    
+      .form-control:focus {
+        box-shadow:none;
+        border-color: var(--active) !important;
+     }
+
+
+     code-input {
+        --item-height: 60px !important;
+        --item-spacing: 30px !important;
+        --item-border-focused: 1px solid var(--active) !important;
+        --item-border-bottom-focused: 1px solid var(--active) !important;
+     }
+
+
+     
+     .final-step{
+         text-align: center;
+         font-size: 14px;
+         color: var(--gray);
+     }
+
+
+}

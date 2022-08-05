@@ -1,5 +1,24 @@
 
+.form-bottom{
+    font-size: 12px;
+    color: var(--grayLight);
 
+    .home-btn{
+        color: var(--blue);
+
+    }
+}
+
+.forgot{
+    text-align: right;
+    font-size: 12px;
+
+
+    a{
+        color: var(--blue) !important;
+
+    }
+}
 
 @media (max-width: 990px) {
     

@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 //boostrap CSS
 
 
@@ -18,12 +18,31 @@ html, body {
   }
 
 
+
+
+
   :root {
-    --hoverColor: white;
-    --black: #063A4F;
-    --green: #01AE13;
-    --paragraph: #707986;
+    --black: #0B2253;
+    --gray: #6D7A98;
+    --blue: #007AFF;
+    --active: #27BE63;
+    --hoverColor: #01AE13;
+    --body: #0B2253;
+    --red: #CA1B1B;
+    --grayLight: #9DA9B3;
+    --white: #FFFFFF;
+    --orange: #F8761B;
+    --green: #048A81;
+    --purple: #6047FA;
+    --dropdownColor: #0B2253;
+    --success: #27BE63;
+    --lightGreen:#DCFEDF;
+    --lighBlue: #E6F2FF;
+    --lightOrange:#FFE9D9;
+    --lightRed:#F6CBCB;
+    --grayfill: #F7F9FB;
 }
+
 
 h1,h2,h3,h4,h5{
   font-family: 'Orelega One', cursive;
@@ -33,6 +52,13 @@ h1,h2,h3,h4,h5{
 
 p,li,a{
   font-family: "Karla", sans-serif;
+}
+
+button{
+ // border: none !important;
+  font-size: 12px !important;
+  line-height: 30px !important;
+
 }
 
 button:hover{
@@ -45,17 +71,149 @@ button:focus {
   border: none;
   border-color: none;
 }
+
+a{
+  text-decoration: none;
+  cursor: pointer;
+}
 .green-txt{
-  color: var(--green) !important;
+  color: var(--active) !important;
 
 }
 
 .green-btn{
-  background-color: var(--green) !important;
+  background-color: var(--active) !important;
     color: white;
+}
+
+.green-btn:hover{
+  color: white;
 }
 
 .parg {
   font-size: 20px;
   color: var(--paragraph);
 }
+
+
+
+
+form{
+
+  label{
+    color: var(--gray);
+    font-size: 14px;
+
+  }
+
+  input, select{
+    font-size: 13px !important;
+    line-height: 30px !important;
+  }
+
+
+  .form-control:focus {
+    box-shadow:none;
+    border-color: var(--active) !important;
+ }
+
+
+ code-input {
+  --item-height: 60px !important;
+  --item-spacing: 30px !important;
+  --item-border-focused: 1px solid var(--active) !important;
+  --item-border-bottom-focused: 1px solid var(--active) !important;
+}
+
+
+
+
+}
+
+.form-bottom{
+  text-align: center;
+}
+
+.submit-btn{
+  width: 60%;
+  color: white;
+  background: var(--hoverColor);
+}
+
+.submit-btn:hover{
+  background-color: var(--active);
+  color: white;
+}
+
+.submit-btn:focus{
+  background-color: var(--active);
+  color: white;
+
+}
+
+.submit-btn:disabled{
+  background-color: var(--active);
+  color: white;
+}
+
+
+ //spinner
+
+.inputcontainer {
+  position: relative;
+}
+
+
+.icon-container {
+  position: absolute;
+  right: 10px;
+  top: calc(62% - 5px);
+  }
+.loader {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  display: inline-block;
+  animation: around 5.4s infinite;
+}
+
+@keyframes around {
+  0% {
+    transform: rotate(0deg)
+  }
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+.loader::after, .loader::before {
+  content: "";
+  background: white;
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border-width: 2px;
+  border-color: #333 #333 transparent transparent;
+  border-style: solid;
+  border-radius: 20px;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  animation: around 0.7s ease-in-out infinite;
+}
+
+.loader::after {
+  animation: around 0.7s ease-in-out 0.1s infinite;
+  background: transparent;
+}
+
+
+
+  .icon-spinner {
+  position: absolute;
+  right: 2px;
+
+  bottom: 3px;
+}
+

@@ -1,16 +1,13 @@
 .login-component{
-    background: #f9f8f4;
+    background: #F5FFF6;
     height: 100%;
 
 
 
     .login-main{
         background: white;
-
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        width: 35%;
+        margin: 3% auto;
 
 
         .tab-headers{
@@ -23,20 +20,22 @@
                 padding: 10px;
                 width: 350px;
                 text-align: center;
-
+                cursor: pointer;
+                font-size: 14px;
+                letter-spacing: 0.5px;
             }
 
         }
         .inactive{
             background-color: #c5c5c52b;
+            color: var(--gray);
         }
 
         .active{
-            background-color: var(--green);
+            background-color: var(--hoverColor);
     color: white;
     box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
     position: relative;
-    cursor: pointer;
         }
 
         .active:after {
@@ -48,11 +47,21 @@
             margin: 0 auto;
             width: 0;
             height: 0;
-            border-top: solid 10px var(--green);
+            border-top: solid 10px var(--hoverColor);
             border-left: solid 10px transparent;
             border-right: solid 10px transparent;
         }
 
 
+    }
+
+.login-tabs{
+    box-shadow: rgb(229 229 229) 0px 50px 100px -20px, rgb(0 0 0 / 55%) 0px 30px 60px -30px;
+    border-radius: 8px;
+
+
+}
+    .login-content{
+        padding: 3% 10%;
     }
 }

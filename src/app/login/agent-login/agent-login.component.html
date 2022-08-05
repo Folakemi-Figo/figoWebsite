@@ -1,9 +1,11 @@
 
       <form>
-        <div class="mb-3">
+        <div class="mb-4">
+            <label for="exampleInputPassword1" class="form-label">Phone Number</label>
+
           <input
             type="text"
-            placeholder="Phone Number"
+            placeholder="080 *** *** **"
             class="form-control"
             id="phoneNumber"
             name="phoneNumber"
@@ -16,7 +18,7 @@
             Please input a Valid phoneNumber.
           </span> -->
         </div>
-        <div class="mb-3">
+        <div class="mb-2">
           <label for="exampleInputPassword1" class="form-label">Agent PIN</label>
           <code-input
             [isCodeHidden]="true"
@@ -25,14 +27,19 @@
           >
           </code-input>
         </div>
-        <a class="text-left" routerLink="../forgot-pin">Forgot Pin?</a>
+        <div class="forgot mb-3">
+            <a class="float-right mb-4" >Forgot Pin?</a>
+
+        </div>
         <div class="form-bottom">
-          <button
-            class="btn mb-3"
+          <a
+            class="btn mb-3 submit-btn"
           >
             Login
-          </button>
-          <span>Back to <a href="" class="home-btn">Figo</a></span>
+        </a>
+          <!-- <p>Back to <a href="" class="home-btn">Figo</a></p> -->
+                    <p>Not an Agent? <a href="" class="home-btn">Merchant</a></p>
+
         </div>
       </form>
   
