@@ -4,7 +4,7 @@
           
             <div class="container">
                 <div class="links">
-                    <button class="btn btn-outline-success login-btn" (click)="openAgentWebApp()">Login</button>
+                    <button class="btn btn-outline-success login-btn" routerLink="../login">Login</button>
                 
                   </div>
           
@@ -30,43 +30,39 @@
       data-aos-offset="0"
         class="main-content"
       >
-        <div class="carousel-div" >
-          <div class="carousel-overlay">
-          </div>
-          <div class="carousel-caption " *ngIf="images">
+
+      <div class="jumbo ">
+
+        <div class="container jumbo-content"> 
+          <div class="text" data-aos="fade-right"       data-aos-delay="400"
+          >
             <h1 class="mb-2 heading">
               Providing accessible
-              <span class="txt-green">financial services</span> to the informal
+              <span class="green-txt">financial services</span> to the informal
               sectors and communities in <span class="green-txt"> Africa</span>
             </h1>
-            <p>  More convenient and secure financial services through our agent networks.
+            <p class="parg">  More convenient and secure financial services
             </p>
               <button type="button" class="btn btn-started mr-3 green-btn">
                 Contact Team
               </button>
-          </div>
-          <ngb-carousel [class.visible]="images"  [interval]="4000" [showNavigationArrows]="false" [showNavigationIndicators]="false">
-            <ng-template ngbSlide *ngFor="let image of images">
-              <div class="picsum-img-wrapper">
-                <img [src]="image" alt="Random slide">
-              </div>
-     
-            </ng-template>
-          </ngb-carousel>
-          
-          
+          </div>        
+        <div class="image">
+          <img src="../../assets/images/carousel2 1.png">
         </div>
-    
+        </div>
+
+      </div>
       
     
     
       <div class="grow-main">
         <div class="container">
-        <h1 class="mb-5 heading">
+        <h1 class="mb-2 mt-4 heading">
           Why you should grow your business with <span class="green-txt">Figo</span>
         </h1>
         <div class="row">
-          <div class="col-sm-6 col-md-6 col-lg-4 py-2 mb-5 " data-aos="fade-right">
+          <div class="col-sm-6 col-md-6 col-lg-4 py-2  " data-aos="fade-right">
             <div class="card h-100">
               <img
                 class="card-img-top"
@@ -82,7 +78,7 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 py-2 mb-5 " data-aos="fade-up">
+          <div class="col-sm-6 col-md-6 col-lg-4 py-2" data-aos="fade-up">
             <div class="card h-100">
               <img
                 class="card-img-top"
@@ -98,7 +94,7 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 py-2 mb-5 " data-aos="fade-left">
+          <div class="col-sm-6 col-md-6 col-lg-4 py-2 " data-aos="fade-left">
             <div class="card h-100">
               <img
                 class="card-img-top"
@@ -113,7 +109,7 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 py-2 mb-5" data-aos="fade-right">
+          <div class="col-sm-6 col-md-6 col-lg-4 py-2 " data-aos="fade-right">
             <div class="card h-100">
               <img
                 class="card-img-top"
@@ -128,7 +124,7 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 py-2 mb-5" data-aos="fade-up">
+          <div class="col-sm-6 col-md-6 col-lg-4 py-2 " data-aos="fade-up">
             <div class="card h-100">
               <img
                 class="card-img-top"
@@ -144,7 +140,7 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-6 col-md-6 col-lg-4 py-2 mb-5" data-aos="fade-left">
+          <div class="col-sm-6 col-md-6 col-lg-4 py-2 " data-aos="fade-left">
             <div class="card h-100">
               <img
                 class="card-img-top"
@@ -164,6 +160,56 @@
       </div>
     </div>
     
+    <div class="solutions">
+      <div class="container">
+        <h1 class="heading">
+          Increase Revenue with Reliable <span class="green-txt">Payment Options</span>
+        </h1>
+
+
+        <div class="options">
+          <div class="row">
+            <div class="col-sm-6 " style="
+            padding: 0px 2%;
+        "   data-aos="zoom-in">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-6 card-side-text">
+                      <h5 class="card-title">Providing Financial Services through <span class="green-txt">Banking Agents</span> 
+                      </h5>
+                      <p class="card-text">Banking And Payment Services</p>
+                      <a class="btn green-btn" href="login">Login</a>
+                    </div>
+                    <div class="col-sm-6">
+          <img src="../../assets/images/carousel3.png" alt="" class="card-img-top" style="height: 200px;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6" style="
+            padding: 0px 2%;
+        "  data-aos="zoom-in">
+              <div class="card h-100">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-6 card-side-text">
+                      <h5 class="card-title">Scale Your Business with <span class="green-txt">Figo Merchant</span> </h5>
+                      <p class="card-text">Merchant Payment solutions</p>
+                      <a href="login" class="btn green-btn">Sign Up</a>
+                    </div>
+                    <div class="col-sm-6">
+          <img src="../../assets/images/figo-merchant.jpg" alt="" class="card-img-top" style="height: 200px;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>        </div>
+      </div>
+    </div>
+
       <div class="service-main">
         <div class="container">
           <div class="top-text mb-5">
@@ -177,14 +223,14 @@
     
           <div class="services">
             <div class="row">
-              <div class="col-md-6 col-sm-12 service-list">
+              <div class="col-md-4 col-sm-12 service-list">
                   <ul >
                     <li *ngFor="let item of items" data-aos="fade-down" >{{item.name}}</li>
                   </ul>
               </div>
-              <div class="col-md-6 parent-imgs">
+              <div class="col-md-8 parent-imgs">
                 <img
-                  src="../../assets/images/pos.png"
+                  src="../../assets/images/serve.png"
                   class="img-responsive bottom-img"
                   width="100%"
                 />
@@ -195,32 +241,7 @@
     </div>
     
     
-    
-        <div class="agent">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-6 agent-img">
-                <img src="../../assets/images/start.png" class="img-responsive " width="100%" />
-              </div>
-              <div class="col-md-6 agent-text">
-                <div class="top-text">
-                  <h1 class="heading">How to be an <span class="green-txt">Agent</span> </h1>
-                  <p class="parg mt-3 mb-5">
-                    Simply sign-up as an Agent and fund your wallet to start
-                    transacting
-                  </p>
-                  <ul class="agent-steps">
-                      <li data-aos="fade-left"> <img src="../../assets/images/sign.png" class="img-responsive" width="100%" alt=""> Sign up</li>
-                      <li class="bar"> </li>
-                      <li data-aos="fade-left"> <img src="../../assets/images/lock.png" alt=""> Fund your Wallet</li>
-                      <li class="bar"> </li>
-                      <li data-aos="fade-left">  <img src="../../assets/images//starttransacting.png" alt=""> Start transacting </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
     
         <div class="waitlist">
             <div class="container">

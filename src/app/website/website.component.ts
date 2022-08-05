@@ -18,6 +18,8 @@ export class WebsiteComponent implements OnInit {
 
   //selectedItem = false;
   items: any= [
+    { name: 'Purchases' },
+
     { name: 'Funds Transfer' },
   { name: 'Cash Withdrawal' },
   {  name: 'Airtime and Data Purchase' },
