@@ -126,7 +126,7 @@
 
 
     .solutions{
-      padding: 6% 5% 8% 5%;
+      padding: 10% 5% 10% 5%;
 
       h1{
         margin-bottom: 4%;
@@ -159,7 +159,7 @@
     .grow-main {
       background-color: white;
 
-      padding: 8% 0px;
+      padding: 6% 0px;
       clip-path: polygon(100% 0%, 100% 90%, 0% 100%, 20% 100%, 0% 100%, 0% 8%) !important;
       .card {
     /* margin-top: 15px; */
@@ -188,7 +188,7 @@
     }
   
     .service-main {
-      padding-top: 5%;
+      padding-top: 6%;
       padding-bottom: 100px;
       background-color: white;
       clip-path: polygon(
@@ -211,7 +211,7 @@
         left: 0;
   
         .bottom-img {
-          width: 80%;
+          width: 75%;
           //height: 100%;
         }
   
@@ -230,7 +230,7 @@
           list-style: none;
           font-weight: bold;
           li {
-            padding: 20px;
+            padding: 15px;
             border-left: 3px solid var(--active);
             font-family: "Rubik", Arial, Helvetica, sans-serif;
           }
@@ -358,7 +358,9 @@
       .follow {
         li {
           float: left;
-          margin: 10px 20px 0px 0px;
+              margin: 0px 10px 0px 0px;
+              font-size: 20px;
+          color: var(--success);
         }
       }
   

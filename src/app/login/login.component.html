@@ -13,21 +13,28 @@
     <div class="login-main">
       <div class="login-tabs">
         <ul class="tab-headers">
-          <li [ngClass]=" activeAgentTab? 'active' : 'inactive'" (click)="selectAgentTab()">
+          <!-- <li [ngClass]=" activeAgentTab? 'active' : 'inactive'" (click)="selectAgentTab()">
                 Figo Agent
+            </li> -->
+            <li mat-tab-link routerLink="agent" routerLinkActive="active"  class="inactive">
+              Figo Agent
             </li>
-          <li  [ngClass]="activeMerchantTab? 'active' : 'inactive' " (click)="selectMerchantTab()">
+          <!-- <li  [ngClass]="activeMerchantTab? 'active' : 'inactive' " (click)="selectMerchantTab()">
                 Figo Merchant
-              </li>
+              </li> -->
+              <li mat-tab-link routerLink="merchant" routerLinkActive="active"   class="inactive">
+                Figo Merchant
+            </li>
         </ul>
 
         <div class="login-content">
-          <div class="agent-login"  *ngIf="activeAgentTab">
+          <router-outlet></router-outlet>
+          <!-- <div class="agent-login"  *ngIf="activeAgentTab">
             <app-agent-login></app-agent-login>
           </div>
           <div class="merchant-login" *ngIf="activeMerchantTab">
             <app-merchant-login></app-merchant-login>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

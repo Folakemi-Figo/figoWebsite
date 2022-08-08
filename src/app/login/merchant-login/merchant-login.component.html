@@ -1,11 +1,14 @@
 <div class="merchant-signup-form">
   <div class="top">
-    <h3>Sign Up</h3>
-    <p class="login-merchant" *ngIf="page1Active">Already a Merchant? <a>Login</a></p>
+    <h3 *ngIf="showSignUp">Sign Up</h3>
+    <h3 *ngIf="!showSignUp">Login</h3>
+
+    <p class="login-merchant" *ngIf="page1Active && showSignUp">Already a Merchant? <a (click)="showSignUp = false">Login</a></p>
+    <p class="login-merchant" *ngIf="showSignUp === false">Not a Merchant? <a (click)="showSignUp = true">Sign Up</a></p>
 
   </div>
 
-  <div class="merchant-signup-pages">
+  <div class="merchant-signup-pages" *ngIf="showSignUp">
 
     <div class="steps-header">
       <div
@@ -255,12 +258,62 @@
 
       <mat-step>
           <div class="final-step">
-            <p>You Registration Has been Compeleted. <br /> Click the Link In your Mail to Verify Your Account</p>
+            <p>You Registration Has been Compeleted. <br /> Our Agent Will be in Contact with You Shortly</p>
 
-          </div>
+            <a routerLink="../../home" class="btn green-btn">Back Home</a>
+          </div> 
 
       </mat-step>
     </mat-stepper>
 </div>
-  <div class="merchant-login-form"></div>
+
+
+  <div class="merchant-login-form" *ngIf="!showSignUp">
+
+    <form>
+      <div class="mb-4">
+          <label for="exampleInputPassword1" class="form-label">Email Address</label>
+
+        <input
+          type="email"
+          placeholder="abc@gmail.com"
+          class="form-control"
+          id="phoneNumber"
+          name="phoneNumber"
+          autocomplete="off"
+          required
+          [maxLength]="11"
+        />
+
+      </div>
+      <div class="mb-2">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+
+        <input
+          type="password"
+          placeholder="*** *** **"
+          class="form-control"
+          id="phoneNumber"
+          name="phoneNumber"
+          autocomplete="off"
+          required
+          [maxLength]="11"
+        />
+      </div>
+      <div class="forgot mb-3">
+          <a class="float-right mb-4" >Forgot password?</a>
+
+      </div>
+      <div class="form-bottom">
+        <a
+          class="btn mb-3 submit-btn"
+        >
+          Login
+      </a>
+        <!-- <p>Back to <a href="" class="home-btn">Figo</a></p> -->
+                  <p>Not an Merchant? <a routerLink="../agent" class="home-btn">Agent</a></p>
+
+      </div>
+    </form>
+  </div>
 </div>

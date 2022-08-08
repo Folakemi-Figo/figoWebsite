@@ -7,7 +7,7 @@ import { MerchantLoginComponent } from './merchant-login/merchant-login.componen
 
 
 const routes: Routes = [
-    { path: 'login',   redirectTo: 'login', pathMatch: 'full' },
+    { path: '',   redirectTo: 'agent', pathMatch: 'full' },
 
     {path: '',
     component: LoginComponent,

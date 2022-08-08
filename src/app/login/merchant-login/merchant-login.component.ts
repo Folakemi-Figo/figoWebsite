@@ -6,23 +6,7 @@ import { MatStepper } from '@angular/material/stepper';
 @Component({
   selector: 'app-merchant-login',
   templateUrl: './merchant-login.component.html',
-  styleUrls: ['./merchant-login.component.scss'],
-  animations: [
-    trigger('simpleFadeAnimation', [
-      state('hidden', style({
-        opacity: 0,
-        visibility:'hidden',
-      })),
-      state( 'visible', style({
-        opacity: 1,
-        visibility:'visible'
-
-      })),
-      transition('hidden <=> visible', [
-        animate('0.5s ease')
-      ])
-    ])
-  ]
+  styleUrls: ['./merchant-login.component.scss']
 })
 export class MerchantLoginComponent implements OnInit {
 
@@ -42,6 +26,9 @@ export class MerchantLoginComponent implements OnInit {
   page3Active: boolean = false;
   page4Active: boolean = false;
 
+
+  showSignUp: boolean = true;
+  
   bvn:any;
   page1Btn: boolean = false; 
   page1Done: boolean = false;
