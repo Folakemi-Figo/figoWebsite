@@ -1,0 +1,33 @@
+.alert{
+    position: fixed;
+    top: 5px; 
+    right:2%;
+    width: 20%;
+    font-size: 12px;
+}
+
+button{
+    float: right;
+    border: none;
+    font-size: 10px;
+    font-weight: bold;
+    color: black;
+    background-color: none !important;
+    padding: 4px;
+}
+
+@media (max-width: 1028px) {
+
+    .alert{
+        width: 30%;
+    }
+    
+}
+
+@media (max-width: 768px) {
+
+    .alert{
+        width: 40%;
+    }
+    
+}

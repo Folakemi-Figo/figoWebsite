@@ -3,13 +3,15 @@
     <h3 *ngIf="showSignUp">Sign Up</h3>
     <h3 *ngIf="!showSignUp">Login</h3>
 
-    <p class="login-merchant" *ngIf="page1Active && showSignUp">Already a Merchant? <a (click)="showSignUp = false">Login</a></p>
-    <p class="login-merchant" *ngIf="showSignUp === false">Not a Merchant? <a (click)="showSignUp = true">Sign Up</a></p>
-
+    <p class="login-merchant" *ngIf="page1Active && showSignUp">
+      Already a Merchant? <a (click)="showSignUp = false">Login</a>
+    </p>
+    <p class="login-merchant" *ngIf="showSignUp === false">
+      Not a Merchant? <a (click)="showSignUp = true">Sign Up</a>
+    </p>
   </div>
 
   <div class="merchant-signup-pages" *ngIf="showSignUp">
-
     <div class="steps-header">
       <div
         class="step step1 next"
@@ -34,18 +36,17 @@
       </div>
     </div>
     <mat-stepper [linear]="isLinear" #stepper>
-      <mat-step [stepControl]="firstFormGroup">
+       <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
           <mat-form-field appearance="fill">
             <div class="top">
-                <p class="">Verify BVN</p>
-        
+              <p class="">Verify BVN</p>
             </div>
             <div class="mb-4">
               <div class="inputcontainer">
                 <label for="exampleInputPassword1" class="form-label"
-                  >Enter BVN <i class="bi bi-exclamation-circle"></i></label
-                >
+                  >Enter BVN <i class="bi bi-exclamation-circle"></i
+                ></label>
 
                 <input
                   type="text"
@@ -54,8 +55,9 @@
                   name="bvn"
                   required
                   [maxLength]="11"
+                  (keypress)="sharedService.keyPressNumbers($event)"
                   (keyup)="getBvn($event)"
-                  [disabled]="showSpinner === true"
+                  [disabled]="bvnVerified"
                 />
                 <div class="icon-container" *ngIf="showSpinner">
                   <i class="loader"></i>
@@ -63,131 +65,223 @@
               </div>
             </div>
 
+            <div
+              *ngIf="bvnResponse?.status === 'successful'"
+              class="bvnResponse"
+            >
+              <span class="green-txt mb-4"
+                >Kindly Input the OTP Sent To Your Phone Number</span>
+              
+            </div>
+
+            <div *ngIf="bvnResponse?.error === true" class="bvnResponse mb-4">
+              <small class="error-txt "
+                >{{bvnResponse?.message | titlecase}}</small>
+              
+            </div>
             <div class="mb-4" *ngIf="showOtp">
-              <label for="exampleInputPassword1" class="form-label"
-                >Agent PIN</label
-              >
+              <label for="exampleInputPassword1" class="form-label">OTP</label>
               <code-input
                 [isCodeHidden]="true"
                 [isPrevFocusableAfterClearing]="false"
                 [codeLength]="4"
                 (codeCompleted)="onCodeCompleted($event)"
+                (codeChanged)="onCodeChanged($event)"
               >
               </code-input>
             </div>
+            
           </mat-form-field>
           <div>
             <div class="form-bottom">
-              <button
-                class="btn submit-btn"
-                (click)="verifyInfo()"
-                *ngIf="page1Done === false"
-                [disabled]="page1Btn === false"
-              >
-                Verify
-              </button>
-              <button
-                class="btn submit-btn"
-                (click)="showPage2(stepper)"
+              <div class="form-bottom">
+                <div class="inputcontainer">
+                  <button
+                  class="btn submit-btn "
+                  (click)="verifyInfo(stepper)"
+                  [disabled]="page1Btn === false"
+                  
+                >
+                  Verify
+                </button>
+                <div class="icon-container2" *ngIf="showLoader">
+                  <i class="loader"></i>
+                </div>
+                </div>
+    
+  
+  
+              </div>
 
-                *ngIf="page1Done === true"
-              >
-                Next ->
-              </button>
             </div>
           </div>
         </form>
       </mat-step>
 
-      <mat-step [stepControl]="secondFormGroup">
+       <mat-step [stepControl]="secondFormGroup">
         <form [formGroup]="secondFormGroup">
           <mat-form-field appearance="fill">
             <div class="top">
-                <p class="">Business Information  <i class="bi bi-exclamation-circle"></i></p>
-              </div>
-      
-              <div class="mb-2">
-                <label for="exampleInputPassword1" class="form-label"
-                  >Business Name <i class="bi bi-exclamation-circle"></i></label
-                >
-      
-                <input
-                  type="text"
-                  class="form-control"
-                  id="businessName"
-                  name="businessName"
-                  autocomplete="off"
-                  required
-                />
-              </div>
-              <div class="mb-2">
-                <label for="exampleInputPassword1" class="form-label"
-                  >CAC Reg.Number</label
-                >
-      
-                <input
-                  type="text"
-                  class="form-control"
-                  id="businessName"
-                  name="businessName"
-                  autocomplete="off"
-                  
-                />
-              </div>
-              <div class="mb-2">
-                <label for="exampleInputPassword1" class="form-label"
-                  >Business Address <i class="bi bi-exclamation-circle"></i></label
-                >
-      
-                <input
-                  type="text"
-                  class="form-control"
-                  id="businessName"
-                  name="businessName"
-                  autocomplete="off"
-                  required
-                />
-              </div>
+              <p class="">Business Information</p>
+            </div>
 
-              <div class="row mb-2">
-                  <div class="mb-2 col-6">
-                      <label>Country</label>
-                    <select               class="form-control form-select"
-                    >
-                        <option>Large select</option>
-                      </select>
-                  </div>
-                  <div class="mb-2 col-6">
-                    <label>State <i class="bi bi-exclamation-circle"></i></label>
-                  <select               class="form-control form-select"
-                  >
-                      <option>Large select</option>
-                    </select>
-                </div>
+            <div class="mb-2">
+              <label for="exampleInputPassword1" class="form-label"
+                >Business Name <i class="bi bi-exclamation-circle"></i
+              ></label>
+
+              <input
+                [class.is-invalid]="
+                  secondFormGroup.get('businessName')?.invalid &&
+                  secondFormGroup.get('businessName')?.touched
+                "
+                type="text"
+                class="form-control"
+                id="businessName"
+                name="businessName"
+                autocomplete="off"
+                required
+                formControlName="businessName"
+              />
+            </div>
+            <div class="mb-2">
+              <label for="exampleInputPassword1" class="form-label"
+                >CAC Reg.Number</label
+              >
+
+              <input
+                type="text"
+                class="form-control"
+                id="cacNo"
+                name="cacNo"
+                autocomplete="off"
+              />
+            </div>
+            <div class="mb-2">
+              <label for="exampleInputPassword1" class="form-label"
+                >Business Address <i class="bi bi-exclamation-circle"></i
+              ></label>
+
+              <input
+                [class.is-invalid]="
+                  secondFormGroup.get('businessAddress')?.invalid &&
+                  secondFormGroup.get('businessAddress')?.touched
+                "
+                type="text"
+                formControlName="businessAddress"
+                class="form-control"
+                id="businessAddress"
+                name="businessAddress"
+                autocomplete="off"
+                required
+              />
+            </div>
+
+            <div class="row mb-2">
+              <div class="mb-2 col-7">
+                <label for="exampleInputPassword1" class="form-label"
+                  >Business Phone Number <i class="bi bi-exclamation-circle"></i
+                ></label>
+
+                <input
+                  [class.is-invalid]="
+                    secondFormGroup.get('businessPhone')?.invalid &&
+                    secondFormGroup.get('businessPhone')?.touched
+                  "
+                  type="text"
+                  (keypress)="sharedService.keyPressNumbers($event)"
+                  (keyup)="sharedService.getNumberLenght($event)"
+                  formControlName="businessPhone"
+                  class="form-control"
+                  id="businessPhone"
+                  name="businessPhone"
+                  [maxLength]="11"
+                  autocomplete="off"
+                  required
+                />
               </div>
-              <div class="row mb-4">
-                <div class="mb-2 col-6">
-                    <label>City <i class="bi bi-exclamation-circle"></i></label>
-                  <select               class="form-control form-select"
-                  >
-                      <option>Large select</option>
-                    </select>
-                </div>
-                <div class="mb-2 col-6">
-                  <label>Local Government <i class="bi bi-exclamation-circle"></i></label>
-                <select               class="form-control form-select"
+              <div class="mb-2 col-5">
+                <label>Country</label>
+                <select
+                  class="form-control form-select"
+                  formControlName="businessCountry"
+                  name="businessCountry"
                 >
-                    <option>Large select</option>
-                  </select>
+                  <option selected value="Nigeria">Nigeria</option>
+                </select>
+              </div>
+            </div>
+            <div class="row mb-4">
+              <div class="mb-2 col-6">
+                <label>State <i class="bi bi-exclamation-circle"></i></label>
+                <select
+                  class="form-control form-select"
+                  [class.is-invalid]="
+                    secondFormGroup.get('businessState')?.invalid &&
+                    secondFormGroup.get('businessState')?.touched
+                  "
+                  formControlName="businessState"
+                  name="businessState"
+                  (change)="getLGAList($event.target)"
+                >
+                  <option [value]="undefined" [selected]="true" hidden>
+                    Select
+                  </option>
+                  <option
+                    *ngFor="let state of stateList; let i = index"
+                    [value]="state"
+                  >
+                    {{ state }}
+                  </option>
+                </select>
+              </div>
+              <div class="mb-2 col-6 inputcontainer">
+                <label
+                  >Local Government <i class="bi bi-exclamation-circle"></i
+                ></label>
+                <select
+                  class="form-control form-select"
+                  [class.is-invalid]="
+                    secondFormGroup.get('businessLga')?.invalid &&
+                    secondFormGroup.get('businessLga')?.touched
+                  "
+                  formControlName="businessLga"
+                  name="businessLga"
+                  id="businessLga"
+                >
+                  <option [value]="undefined" [selected]="true" hidden>
+                    Select
+                  </option>
+
+                  <option
+                    *ngFor="let lga of lgaList; let i = index"
+                    [value]="lga"
+                  >
+                    {{ lga }}
+                  </option>
+                </select>
+                <div class="icon-container" *ngIf="showSpinner"  style="left: 9rem;">
+                  <i class="loader"></i>
+                </div>
               </div>
             </div>
           </mat-form-field>
           <div class="form-bottom">
-            <button class="btn btn-danger " style="width: 30%;" (click)="goBackPage1(stepper)">Back</button>
+            <button
+              class="btn btn-danger"
+              style="width: 30%"
+              (click)="goBackPage1(stepper)"
+            >
+              Back
+            </button>
 
-            <button                 class="btn submit-btn" style="width: 50%; margin-left: 10px;
-            "
-            matStepperNext (click)="showPage3()">
+            <button
+              class="btn submit-btn"
+              style="width: 50%; margin-left: 10px"
+              
+              (click)="showPage3(stepper)"
+              [disabled]="secondFormGroup.invalid"
+            >
               Next
             </button>
           </div>
@@ -198,58 +292,121 @@
         <form [formGroup]="thridFormGroup">
           <mat-form-field appearance="fill">
             <div class="top">
-                <p class="">Set Password</p>
-              </div>
-      
-              <div class="mb-2">
-                <label for="exampleInputPassword1" class="form-label"
-                  > Email Address <i class="bi bi-exclamation-circle"></i></label
+              <p class="">Set Password</p>
+            </div>
+
+            <div class="mb-2">
+              <label for="exampleInputPassword1" class="form-label">
+                Email Address <i class="bi bi-exclamation-circle"></i
+              ></label>
+
+              <input
+                [class.is-invalid]="
+                  thridFormGroup.get('email')?.invalid &&
+                  thridFormGroup.get('email')?.touched
+                "
+                type="text"
+                class="form-control"
+                id="email"
+                name="email"
+                formControlName="email"
+                autocomplete="off"
+                required
+              />
+              <div
+                *ngIf="
+                  (thridFormGroup.get('email')?.invalid &&
+                  thridFormGroup.get('email')?.touched) ||
+                  thridFormGroup.get('email')?.dirty
+                "
+              >
+                <small
+                  class="text-danger"
+                  *ngIf="thridFormGroup.get('email')?.errors?.['email']"
+                  >Email address is invalid</small
                 >
-      
-                <input
-                  type="text"
-                  class="form-control"
-                  id="businessName"
-                  name="businessName"
-                  autocomplete="off"
-                  required
-                />
               </div>
-              <div class="mb-2">
-                <label for="exampleInputPassword1" class="form-label"
-                  >Password <i class="bi bi-exclamation-circle"></i></label
+            </div>
+            <div class="mb-2 ">
+              <label for="exampleInputPassword1" class="form-label"
+                >Password <i class="bi bi-exclamation-circle"></i
+              ></label>
+
+              <div class="input-group">
+                <input
+                [class.is-invalid]="
+                thridFormGroup.get('password')?.invalid &&
+                thridFormGroup.get('password')?.touched
+                "
+                [type]=" showPassword ? 'text' : 'password' "
+                 class="form-control"
+                id="password"
+                name="password"
+                formControlName="password"
+                autocomplete="off"
+                required
+              />
+              <div class="input-group-append" (click)='showHidePassword()'>
+                <span class="input-group-text" *ngIf="showPassword"><i class="bi bi-eye-slash"></i></span>
+                <span class="input-group-text" *ngIf="!showPassword"><i class="bi bi-eye"></i></span>
+
+              </div>
+              </div>
+       
+
+              <div
+                *ngIf="
+                  (thridFormGroup.get('password')?.invalid &&
+                  thridFormGroup.get('password')?.touched) ||
+                    thridFormGroup.get('password')?.dirty
+                "
+              >
+                <small
+                  class="text-danger"
+                  *ngIf="thridFormGroup.get('password')?.invalid"
+                  >Password must be 8 digits and above</small
                 >
-      
-                <input
-                  type="text"
-                  class="form-control"
-                  id="businessName"
-                  name="businessName"
-                  autocomplete="off"
-                  required
-                />
               </div>
-              <div class="mb-4">
-                <label for="exampleInputPassword1" class="form-label"
-                  >Verify Password</label
-                >
-      
-                <input
-                  type="text"
-                  class="form-control"
-                  id="businessName"
-                  name="businessName"
-                  autocomplete="off"
-                  required
-                />
-              </div>
+            </div>
+            <div class="mb-4">
+              <label for="exampleInputPassword1" class="form-label"
+                >Verify Password</label
+              >
+
+              <input
+                type="text"
+                [ngClass]="passwordVerified === false ? 'errorField' : ''"
+                class="form-control"
+                id="verifyPassword"
+                name="verifyPassword"
+                autocomplete="off"
+                required
+                (keyup)="verifyPassword($event)"
+              />
+              <small class="text-danger" *ngIf="passwordVerified === false"
+                >Passwords do not Match</small
+              >
+            </div>
           </mat-form-field>
           <div class="form-bottom">
-            <button class="btn btn-danger " style="width: 30%;" (click)="goBackPage2(stepper)">Back</button>
+            <button
+              class="btn btn-danger"
+              style="width: 30%"
+              (click)="goBackPage2(stepper)"
+            >
+              Back
+            </button>
 
-            <button                 class="btn submit-btn" style="width: 50%; margin-left: 10px;
-            "
-            (click)="compelete(stepper)" >
+            <button
+              class="btn submit-btn"
+              style="width: 50%; margin-left: 10px"
+              [disabled]="
+                passwordVerified === false ||
+                passwordVerified === undefined ||
+                thridFormGroup.get('email')?.value === ''
+              "
+              (click)="compelete(stepper)"
+            >
               Done!
             </button>
           </div>
@@ -257,62 +414,77 @@
       </mat-step>
 
       <mat-step>
-          <div class="final-step">
-            <p>You Registration Has been Compeleted. <br /> Our Agent Will be in Contact with You Shortly</p>
+        <div class="final-step">
+          <p>
+            You Registration Has been Compeleted. <br />
+            Our Agent Will be in Contact with You Shortly
+          </p>
 
-            <a routerLink="../../home" class="btn green-btn">Back Home</a>
-          </div> 
-
+          <a routerLink="../../home" class="btn green-btn">Back Home</a>
+        </div>
       </mat-step>
     </mat-stepper>
-</div>
-
+  </div>
 
   <div class="merchant-login-form" *ngIf="!showSignUp">
-
-    <form>
+    <form [formGroup]="loginFormGroup">
       <div class="mb-4">
-          <label for="exampleInputPassword1" class="form-label">Email Address</label>
+        <label for="exampleInputPassword1" class="form-label"
+          >Email Address</label
+        >
 
         <input
+        [class.is-invalid]="
+        loginFormGroup.get('email')?.invalid &&
+        loginFormGroup.get('email')?.touched
+        "
           type="email"
           placeholder="abc@gmail.com"
           class="form-control"
-          id="phoneNumber"
-          name="phoneNumber"
+          formControlName="email"
+          id="email"
+          name="email"
           autocomplete="off"
           required
-          [maxLength]="11"
         />
-
       </div>
       <div class="mb-2">
         <label for="exampleInputPassword1" class="form-label">Password</label>
 
         <input
+        [class.is-invalid]="
+        loginFormGroup.get('password')?.invalid &&
+        loginFormGroup.get('password')?.touched
+        "
           type="password"
           placeholder="*** *** **"
           class="form-control"
-          id="phoneNumber"
-          name="phoneNumber"
+          id="password"
+          name="password"
+          formControlName="password"
           autocomplete="off"
           required
           [maxLength]="11"
         />
       </div>
       <div class="forgot mb-3">
-          <a class="float-right mb-4" >Forgot password?</a>
-
+        <a class="float-right mb-4">Forgot password?</a>
       </div>
       <div class="form-bottom">
-        <a
-          class="btn mb-3 submit-btn"
-        >
-          Login
-      </a>
-        <!-- <p>Back to <a href="" class="home-btn">Figo</a></p> -->
-                  <p>Not an Merchant? <a routerLink="../agent" class="home-btn">Agent</a></p>
+        <div class="inputcontainer">
 
+        <button class="btn mb-3 submit-btn" (click)="login()"
+            [disabled]="loginFormGroup.invalid || logged"
+        > Login </button>
+
+        <div class="icon-container2" style="top: calc(62% - 25px);" *ngIf="showLoader">
+          <i class="loader"></i>
+        </div>
+        </div>
+        <!-- <p>Back to <a href="" class="home-btn">Figo</a></p> -->
+        <p>
+          Not an Merchant? <a routerLink="../agent" class="home-btn">Agent</a>
+        </p>
       </div>
     </form>
   </div>

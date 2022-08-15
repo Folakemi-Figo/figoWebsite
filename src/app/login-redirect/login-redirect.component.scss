@@ -1,0 +1,125 @@
+.login-component{
+    background: #F5FFF6;
+    height: 100%;
+
+
+
+    .login-main{
+        background: white;
+        width: 35%;
+        margin: 10% auto;
+
+
+        .tab-headers{
+            list-style: none;
+            text-decoration: none;
+            padding: 6% 10% 10%;
+            li{
+                // background-color:  var(--hoverColor);
+                color: white;
+                border-radius: 5px;
+                padding: 10px;
+                text-align: center;
+                cursor: pointer;
+                font-size: 14px;
+                letter-spacing: 0.5px;
+                margin: 20px 10%;
+            }
+
+            li:hover{
+                background-color: var(--hoverColor);
+                cursor: pointer;
+                color: white !important;
+
+            }
+
+        }
+        .inactive{
+            font-size: 24px;
+            background-color: rgba(197, 197, 197, 0.168627451);
+            color: var(--gray);
+            line-height: 2;   
+            border: 0.5px solid;     }
+
+        .active{
+            background-color: var(--hoverColor);
+    color: white;
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    position: relative;
+   padding: 10px;
+        }
+
+        .active:after {
+            content:'';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 0;
+            height: 0;
+            border-top: solid 10px var(--hoverColor);
+            border-left: solid 10px transparent;
+            border-right: solid 10px transparent;
+        }
+
+
+    }
+
+.login-tabs{
+    box-shadow: rgb(229 229 229) 0px 50px 100px -20px, rgb(0 0 0 / 55%) 0px 30px 60px -30px;
+    border-radius: 8px;
+    text-align: center;
+
+}
+    .login-content{
+        padding: 0 10%;
+        text-align: center;
+    }
+
+
+    .link{
+        margin: 5%;
+        h3{
+
+    font-size: 18px;
+    background: #0038bd;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+
+        }
+    }
+}
+
+
+
+@media (max-width: 1240px) {
+.login-main{
+    width: 40% !important;
+}
+}
+
+@media (max-width: 990px) {
+    .login-main{
+        width: 50% !important;
+    }
+
+
+}
+
+
+@media (max-width: 768px) {
+    .login-main{
+        width: 60% !important;
+    }
+
+}
+
+@media (max-width: 576px) {
+    .login-main{
+        margin-top: 50% !important;
+        width: 90% !important;
+    }
+
+}

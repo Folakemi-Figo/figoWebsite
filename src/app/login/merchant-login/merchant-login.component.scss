@@ -109,7 +109,100 @@
          text-align: center;
          font-size: 14px;
          color: var(--gray);
+         
      }
 
 
+     .bvnResponse{
+         text-align: center;
+     }
+
+
+     .errorField{
+         border-color: var(--red) !important;
+     }
+
+     .errorField:focus{
+        border-color: var(--red) !important;
+
+     }
+
+
+     .icon-container2{
+        position: absolute;
+        top: calc(62% - 15px);
+        left: calc(80% - 40px);
+
+
+        .loader {
+            position: relative;
+            height: 20px;
+            width: 20px;
+            display: inline-block;
+            animation: around 5.4s infinite;
+          }
+          
+          @keyframes around {
+            0% {
+              transform: rotate(0deg)
+            }
+            100% {
+              transform: rotate(360deg)
+            }
+          }
+          
+          .loader::after, .loader::before {
+            content: "";
+            background: transparent;
+            position: absolute;
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            border-width: 2px;
+            border-color: #333 #333 transparent transparent;
+            border-style: solid;
+            border-radius: 20px;
+            box-sizing: border-box;
+            top: 0;
+            left: 0;
+            animation: around 0.7s ease-in-out infinite;
+          }
+          
+          .loader::after {
+            animation: around 0.7s ease-in-out 0.1s infinite;
+            background: transparent;
+          }
+          
+          
+          
+            .icon-spinner {
+            position: absolute;
+            right: 2px;
+          
+            bottom: 3px;
+          }
+          
+          
+     }
+
+
+
+     .input-group{
+         
+        input{
+            border-right: 0 !important;
+        }
+
+
+        .input-group-append{
+            margin-left: -3px !important;
+
+            cursor: pointer;
+        }
+        .input-group-text{
+            line-height: 2 !important;
+            background-color: transparent !important;
+            border-left: 0 !important;
+        }
+     }
 }

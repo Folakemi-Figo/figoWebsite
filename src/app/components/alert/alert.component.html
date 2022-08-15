@@ -1,0 +1,9 @@
+
+
+  <div class="alert fade show" *ngIf="message" [ngClass]="message.cssClass" role="alert" data-aos="fade-in">
+    <button type="button btn" class="close" data-dismiss="alert" aria-label="Close" (click)="message = !message"> 
+      <i class="bi bi-x-lg"></i>
+    </button>
+    <strong>{{message.text}}</strong>
+   
+  </div>

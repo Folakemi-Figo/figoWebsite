@@ -1,3 +1,4 @@
+import { EmptyComponent } from './components/empty/empty.component';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -7,17 +8,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WebsiteComponent } from './website/website.component';
-import { LoginComponent } from './login/login.component';
-import { AgentLoginComponent } from './login/agent-login/agent-login.component';
-import { MerchantLoginComponent } from './login/merchant-login/merchant-login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginModule } from './login/login.module';
+import { AlertModule } from './components/alert/alert.module';
+import { UserAuthGuard } from './services/user-auth.guard';
+import { LoginRedirectComponent } from './login-redirect/login-redirect.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WebsiteComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    EmptyComponent,
+    LoginRedirectComponent
   ],
   imports: [
     BrowserModule,
@@ -26,10 +29,11 @@ import { LoginModule } from './login/login.module';
     RouterModule,
     NgbModule,
     LoginModule,
+    AlertModule,
     AppRoutingModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
+  providers: [UserAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

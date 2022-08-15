@@ -76,6 +76,15 @@ a{
   text-decoration: none;
   cursor: pointer;
 }
+
+.blue-btn{
+  background-color: var(--dropdownColor) !important;
+  color: white;
+
+}
+.blue-btn:hover{
+  background-color: #2e4e91ed !important;
+}
 .green-txt{
   color: var(--active) !important;
 
@@ -89,6 +98,10 @@ a{
 .green-btn:hover{
   color: white;
 }
+
+  .error-txt{
+    color: #CA1B1B ;
+  }
 
 .parg {
   font-size: 20px;
