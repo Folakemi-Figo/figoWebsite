@@ -33,7 +33,8 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/_redirects"
+              "src/_redirects",
+               "src/.htaccess"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
