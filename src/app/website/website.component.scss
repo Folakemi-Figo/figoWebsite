@@ -375,6 +375,7 @@ padding-right: 25px;
         ::placeholder {
           color: var(--gray) !important;
           font-size: 15px;
+          
         }
         input {
           height: 50px;
@@ -470,6 +471,24 @@ padding-right: 25px;
     .heading {
       font-size: 30px !important;
     }
+
+    .input-group{
+
+ 
+      input{
+        margin-right: 0px !important;
+        margin-bottom: 10px !important;
+        width: 100%;
+      }
+    .input-group-append{
+      width: 100% !important;
+
+      button{
+        width:100% !important
+      }
+    }
+    }
+  
 
     .jumbo{
 

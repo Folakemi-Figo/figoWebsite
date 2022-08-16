@@ -1,6 +1,4 @@
 import { Router } from '@angular/router';
-import { SharedService } from './../../services/shared.service';
-import { MerchantAuthService } from './../../services/merchant/merchant-auth.service';
 import {
   trigger,
   state,
@@ -72,9 +70,7 @@ export class MerchantLoginComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private merchantAuth: MerchantAuthService,
     private alertService: AlertService,
-    public sharedService: SharedService,
     private router: Router
   ) {}
 
@@ -109,92 +105,92 @@ export class MerchantLoginComponent implements OnInit {
   }
 
   verifyInfo(stepper: MatStepper) {
-    if (this.bvnVerified === false && this.otpVerifired === false) {
-      this.showSpinner = true;
-      let bvn = {
-        bvn: this.bvn,
-      };
-      this.merchantAuth.verifyBVN(bvn).subscribe(
-        (res: any) => {
-          if (res.status === 'successful') {
-            this.bvnResponse = res;
-            this.showSpinner = false;
+    // if (this.bvnVerified === false && this.otpVerifired === false) {
+    //   this.showSpinner = true;
+    //   let bvn = {
+    //     bvn: this.bvn,
+    //   };
+    //   this.merchantAuth.verifyBVN(bvn).subscribe(
+    //     (res: any) => {
+    //       if (res.status === 'successful') {
+    //         this.bvnResponse = res;
+    //         this.showSpinner = false;
 
-            this.bvnVerified = true;
-            this.showOtp = true;
-            this.page1Btn = false;
-          } else {
-            this.bvnResponse = res;
-            this.showSpinner = false;
-          }
-        },
-        (error) => {
-          this.showSpinner = false;
-          this.alertService.error(error.statusText);
-        }
-      );
-    } else if (this.bvnVerified === true && this.otpVerifired === false) {
-      this.showLoader = true;
+    //         this.bvnVerified = true;
+    //         this.showOtp = true;
+    //         this.page1Btn = false;
+    //       } else {
+    //         this.bvnResponse = res;
+    //         this.showSpinner = false;
+    //       }
+    //     },
+    //     (error) => {
+    //       this.showSpinner = false;
+    //       this.alertService.error(error.statusText);
+    //     }
+    //   );
+    // } else if (this.bvnVerified === true && this.otpVerifired === false) {
+    //   this.showLoader = true;
 
-      let data = {
-        code: this.otp,
-        bvn: this.bvn,
-      };
-      this.merchantAuth.verifyOTP(data).subscribe(
-        (res: any) => {
-          this.response = res;
-          this.showSpinner = false;
-          this.showLoader = false;
-          if (res.status === 'successful') {
-            this.token = res.data;
-            localStorage.setItem('verified', JSON.stringify(res.data));
+    //   let data = {
+    //     code: this.otp,
+    //     bvn: this.bvn,
+    //   };
+    //   this.merchantAuth.verifyOTP(data).subscribe(
+    //     (res: any) => {
+    //       this.response = res;
+    //       this.showSpinner = false;
+    //       this.showLoader = false;
+    //       if (res.status === 'successful') {
+    //         this.token = res.data;
+    //         localStorage.setItem('verified', JSON.stringify(res.data));
 
-            this.otpVerifired = true;
-            this.page1Btn = false;
-            this.page1Active = false;
-            this.page2Active = true;
-            stepper.next();
-          }
+    //         this.otpVerifired = true;
+    //         this.page1Btn = false;
+    //         this.page1Active = false;
+    //         this.page2Active = true;
+    //         stepper.next();
+    //       }
 
-          if (res.status === 'failed') {
-            this.alertService.error(res.message);
-          }
-        },
-        (error) => {
-          this.alertService.error(error.statusText);
-        }
-      );
-    }
+    //       if (res.status === 'failed') {
+    //         this.alertService.error(res.message);
+    //       }
+    //     },
+    //     (error) => {
+    //       this.alertService.error(error.statusText);
+    //     }
+    //   );
+    // }
   }
 
   getStateList() {
-    this.merchantAuth.getStates().subscribe(
-      (res: any) => {
-        return (this.stateList = res.data);
-      },
-      (error) => {
-        this.alertService.error(error.statusText);
-      }
-    );
+    // this.merchantAuth.getStates().subscribe(
+    //   (res: any) => {
+    //     return (this.stateList = res.data);
+    //   },
+    //   (error) => {
+    //     this.alertService.error(error.statusText);
+    //   }
+    // );
   }
 
   getLGAList(e: any) {
-    this.showSpinner = true;
-    let state = {
-      state: e.value,
-    };
+    // this.showSpinner = true;
+    // let state = {
+    //   state: e.value,
+    // };
 
-    this.merchantAuth.getLGA(state).subscribe(
-      (res: any) => {
-        this.lgaList = res.data;
-        this.showSpinner = false;
+    // this.merchantAuth.getLGA(state).subscribe(
+    //   (res: any) => {
+    //     this.lgaList = res.data;
+    //     this.showSpinner = false;
 
-        return this.lgaList;
-      },
-      (error) => {
-        this.alertService.error(error.statusText);
-      }
-    );
+    //     return this.lgaList;
+    //   },
+    //   (error) => {
+    //     this.alertService.error(error.statusText);
+    //   }
+    // );
   }
 
   verifyPassword(e: any) {
@@ -284,27 +280,27 @@ export class MerchantLoginComponent implements OnInit {
   }
 
   compelete(stepper: MatStepper) {
-    this.page3Active = false;
-    this.page4Active = true;
+    // this.page3Active = false;
+    // this.page4Active = true;
 
-    this.secondFormGroup.patchValue({
-      password: this.thridFormGroup.get('password')?.value,
-      email: this.thridFormGroup.get('email')?.value,
-    });
+    // this.secondFormGroup.patchValue({
+    //   password: this.thridFormGroup.get('password')?.value,
+    //   email: this.thridFormGroup.get('email')?.value,
+    // });
 
-    this.merchantAuth
-      .updateMerchantInfo(
-        this.secondFormGroup.value,
-        this.token?.token,
-        this.token?.id
-      )
-      .subscribe(
-        (res: any) => {
-          stepper.next();
-        },
-        (error) => {
-          this.alertService.error(error.statusText);
-        }
-      );
+    // this.merchantAuth
+    //   .updateMerchantInfo(
+    //     this.secondFormGroup.value,
+    //     this.token?.token,
+    //     this.token?.id
+    //   )
+    //   .subscribe(
+    //     (res: any) => {
+    //       stepper.next();
+    //     },
+    //     (error) => {
+    //       this.alertService.error(error.statusText);
+    //     }
+    //   );
   }
 }

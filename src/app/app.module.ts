@@ -11,7 +11,6 @@ import { WebsiteComponent } from './website/website.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginModule } from './login/login.module';
 import { AlertModule } from './components/alert/alert.module';
-import { UserAuthGuard } from './services/user-auth.guard';
 import { LoginRedirectComponent } from './login-redirect/login-redirect.component';
 
 @NgModule({
@@ -33,7 +32,7 @@ import { LoginRedirectComponent } from './login-redirect/login-redirect.componen
     AppRoutingModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [UserAuthGuard],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,4 @@
 import { LoginRedirectComponent } from './login-redirect/login-redirect.component';
-import { UserAuthGuard } from './services/user-auth.guard';
 import { NgModule } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterModule, RouterStateSnapshot, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -12,15 +11,16 @@ const routes: Routes = [
 
 {path: 'figo/login', component: LoginRedirectComponent},
 
-{
-  path: 'login',
-  loadChildren: () => import('./login/login-routing.module').then(m => m.LoggingRoutngModule)
-},
+{path: 'login', redirectTo: 'figo/login', pathMatch: 'full'},
+
 
 
 { path: 'page-not-found', component: PageNotFoundComponent },
 { path: '**', component: PageNotFoundComponent },
 
+
+{ path: '404', redirectTo: 'home',  pathMatch: 'full' },
+{ path: '**',  redirectTo: 'home',pathMatch: 'full'  },
 
 ];
 

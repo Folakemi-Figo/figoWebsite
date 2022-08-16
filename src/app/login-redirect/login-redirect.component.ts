@@ -14,11 +14,11 @@ export class LoginRedirectComponent implements OnInit {
 
 
   openMerchant(){
-    window.location.href = 'http://localhost:4600';
+    // window.location.href = 'http://localhost:4600';
   }
 
   openAgent(){
-    window.location.href = 'http://localhost:4800';
+    // window.location.href = 'http://localhost:4800';
 
   }
 }

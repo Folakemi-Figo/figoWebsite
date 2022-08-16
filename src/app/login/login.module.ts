@@ -9,17 +9,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AgentLoginComponent } from './agent-login/agent-login.component';
 import { LoginComponent } from './login.component';
-import { MerchantLoginComponent } from './merchant-login/merchant-login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CodeInputModule } from 'angular-code-input';
 import {MatStepperModule} from '@angular/material/stepper';
-import { UserAuthGuard } from '../services/user-auth.guard';
 
 @NgModule({
   declarations: [
     LoginComponent,
     AgentLoginComponent,
-    MerchantLoginComponent,
   ],
   imports: [
     BrowserModule,
