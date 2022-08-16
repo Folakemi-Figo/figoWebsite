@@ -12,6 +12,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { LoginModule } from './login/login.module';
 import { AlertModule } from './components/alert/alert.module';
 import { LoginRedirectComponent } from './login-redirect/login-redirect.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { LoginRedirectComponent } from './login-redirect/login-redirect.componen
     AppRoutingModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
+  providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
